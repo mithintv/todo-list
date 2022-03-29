@@ -1,0 +1,27 @@
+<%- include ("header") -%>
+
+  <body>
+    <div class="box" id="heading">
+      <h1>
+        <%= listTitle %>
+      </h1>
+    </div>
+    <div class="box">
+      <!-- dynamic list items via EJS -->
+      <% for (i=0; i < list.length; i++) { %>
+        <div class="item">
+          <input type="checkbox" />
+          <p>
+            <%= list[i] %>
+          </p>
+        </div>
+        <% } %>
+
+          <!-- add button and post route -->
+          <form action=<%=route%> method="post">
+            <input type="text" name="newListItem" placeholder="New Item" />
+            <button type="submit" name="button" value=<%=route%>>+</button>
+          </form>
+    </div>
+  </body>
+  <%- include ("footer") -%>

@@ -12,8 +12,8 @@ const urlencodedParser = bodyParser.urlencoded({ extended: true });
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-let listArray = ["Buy Food", "Cook Food", "Eat Food"];
-let workListArray = [];
+const listArray = ["Buy Food", "Cook Food", "Eat Food"];
+const workListArray = [];
 
 app.get("/", (req, res) => {
   res.render("list", { listTitle: date.getDay(), list: listArray, route: "/" });

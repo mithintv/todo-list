@@ -8,20 +8,25 @@
     </div>
     <div class="box">
       <!-- dynamic list items via EJS -->
-      <% list.forEach(item=> { %>
-        <div class="item">
-          <input type="checkbox" />
-          <p>
-            <%= item.name %>
-          </p>
-        </div>
-        <% }) %>
 
-          <!-- add button and post route -->
-          <form action=<%=route%> method="post">
-            <input type="text" name="newListItem" placeholder="New Item" />
-            <button type="submit" name="button" value=<%=route%>>+</button>
-          </form>
+      <% list.forEach(item=> { %>
+        <form action="/delete" method="post">
+          <div class="item">
+            <input name="deleteItem" value="<%= item._id %>" type="checkbox" onChange="this.form.submit()">
+            <p>
+              <%= item.name %>
+            </p>
+          </div>
+          <% }) %>
+            <input type="hidden" name="listName" value="<%= listTitle %>">
+        </form>
+
+
+        <!-- add button and post route -->
+        <form class="item" action="/" method="post">
+          <input class="add" type="text" name="newListItem" placeholder="New Item" autofocus />
+          <button type="submit" name="button" value=<%=listTitle%>>+</button>
+        </form>
     </div>
   </body>
   <%- include ("footer") -%>

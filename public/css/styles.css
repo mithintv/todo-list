@@ -54,7 +54,7 @@ p {
   color: #00204a;
 }
 
-form {
+form.item {
   text-align: center;
   margin-left: 20px;
 }
@@ -85,6 +85,10 @@ input[type="text"] {
 input[type="text"]:focus {
   outline: none;
   box-shadow: inset 0 -3px 0 0 #a683e3;
+}
+
+input.add:focus {
+  caret-color: transparent;
 }
 
 ::placeholder {

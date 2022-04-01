@@ -8,14 +8,14 @@
     </div>
     <div class="box">
       <!-- dynamic list items via EJS -->
-      <% for (i=0; i < list.length; i++) { %>
+      <% list.forEach(item=> { %>
         <div class="item">
           <input type="checkbox" />
           <p>
-            <%= list[i] %>
+            <%= item.name %>
           </p>
         </div>
-        <% } %>
+        <% }) %>
 
           <!-- add button and post route -->
           <form action=<%=route%> method="post">

@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+require("dotenv").config();
 
 // requiring custom modules
 const date = require(__dirname + "/js/date.js");
@@ -11,10 +12,12 @@ const date = require(__dirname + "/js/date.js");
 const app = express();
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
+const port = process.env.PORT || 5000;
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/todo-listDB");
+mongoose.connect(`mongodb+srv://admin:${process.env.PASSWORD}@cluster0.sealf.mongodb.net/todo-listDB`);
 
 const itemsSchema = {
   name: String
@@ -133,6 +136,6 @@ app.post("/delete", urlencodedParser, (req, res) => {
 });
 
 
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
+app.listen(port, () => {
+  console.log("Server started succesfully");
 });
